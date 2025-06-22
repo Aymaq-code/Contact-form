@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Frontend Mentor | Contact form</title>
+  </head>
+  <body>
+    <div class="contact-form">
+      <h2 class="title">Contact Us</h2>
+      <form class="form mt-small">
+        <div class="input-group">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" name="first-name" />
+          <span class="errorMsg"> This field is required </span>
+        </div>
+
+        <div class="input-group res-mt">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" name="last-name" />
+          <span class="errorMsg"> This field is required </span>
+        </div>
+
+        <div class="input-group email mt-small">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" />
+          <span class="errorMsg"> Please enter a valid email address </span>
+        </div>
+
+        <div class="radio-group mt-small">
+          <label class="query">Query Type *</label>
+          <div class="radio-container">
+            <label class="radio-option">
+              <input type="radio" name="query" id="enquiry" />
+              <span class="custom-radio"></span>
+              <span class="radio-text">General Enquiry</span>
+            </label>
+
+            <label class="radio-option">
+              <input type="radio" name="query" id="support" />
+              <span class="custom-radio"></span>
+              <span class="radio-text">Support Request</span>
+            </label>
+          </div>
+          <span class="errorMsg"> Please select a query type </span>
+        </div>
+
+        <div class="input-group msg mt-small">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+          <span class="errorMsg"> This field is required </span>
+        </div>
+
+        <div class="input-group confirming mt-medium">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox" class="custom-checkbox"></label>
+          <p>I consent to being contacted by the team *</p>
+          <span class="errorMsg"> Please consent to be contacted </span>
+        </div>
+
+        <div class="input-group submit mt-medium mt-small">
+          <input type="submit" class="submitForm" value="Submit" />
+        </div>
+      </form>
+    </div>
+    <script src="form.js"></script>
+  </body>
+</html>
