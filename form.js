@@ -5,6 +5,7 @@ const radioOption = document.querySelectorAll(".radio-option");
 const message = document.getElementById("message");
 const checkbox = document.getElementById("checkbox");
 const errorMsg = document.querySelectorAll(".errorMsg");
+const successMsg = document.querySelector(".successMsg");
 const submitBtn = document.querySelector(".submitForm");
 
 // Highlight selected radio option immediately
@@ -20,11 +21,14 @@ radios.forEach((radio) => {
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // Validate text inputs
+  let isValid = true; // We assume everything is valid first
+
+  // Validate text inputs (First name, Last name)
   textInputs.forEach((el, i) => {
-    if (el.value === "") {
+    if (el.value.trim() === "") {
       el.classList.add("red");
       errorMsg[i].style.display = "block";
+      isValid = false;
     } else {
       el.classList.remove("red");
       errorMsg[i].style.display = "none";
@@ -35,6 +39,7 @@ submitBtn.addEventListener("click", (e) => {
   if (emailInput.value.trim() === "") {
     emailInput.classList.add("red");
     errorMsg[2].style.display = "block";
+    isValid = false;
   } else {
     emailInput.classList.remove("red");
     errorMsg[2].style.display = "none";
@@ -45,6 +50,7 @@ submitBtn.addEventListener("click", (e) => {
   if (!isRadioChecked) {
     errorMsg[3].style.display = "block";
     radioOption.forEach((option) => option.classList.remove("selected"));
+    isValid = false;
   } else {
     errorMsg[3].style.display = "none";
     radioOption.forEach((option) => {
@@ -53,10 +59,11 @@ submitBtn.addEventListener("click", (e) => {
     });
   }
 
-  // Validate message
+  // Validate message textarea
   if (message.value.trim() === "") {
     message.classList.add("red");
     errorMsg[4].style.display = "block";
+    isValid = false;
   } else {
     message.classList.remove("red");
     errorMsg[4].style.display = "none";
@@ -65,7 +72,15 @@ submitBtn.addEventListener("click", (e) => {
   // Validate checkbox
   if (!checkbox.checked) {
     errorMsg[5].style.display = "block";
+    isValid = false;
   } else {
     errorMsg[5].style.display = "none";
+  }
+
+  //  Show success message if all fields are valid
+  if (isValid) {
+    successMsg.style.display = "block";
+  } else {
+    successMsg.style.display = "none";
   }
 });
